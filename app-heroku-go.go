@@ -33,7 +33,7 @@ func dbFunc(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	http.redirect(w, r, "/", nil)
+	http.Redirect(w, r, "/", 200)
 }
 func main() {
 	r := mux.NewRouter()
