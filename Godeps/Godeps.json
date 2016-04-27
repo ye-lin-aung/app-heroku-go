@@ -1,0 +1,6 @@
+{
+	"ImportPath": "app-heroku-go",
+	"GoVersion": "go1.5",
+	"GodepVersion": "v62",
+	"Deps": []
+}
