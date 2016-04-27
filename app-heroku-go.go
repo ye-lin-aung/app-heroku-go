@@ -28,7 +28,7 @@ func apiTest(w http.ResponseWriter, r *http.Request) {
 
 func dbFunc(w http.ResponseWriter, r *http.Request) {
 
-	if _, err := db.Exec("CREATE TABLE IF NOT EXISTS ticks (tick timestamp)"); err != nil {
+	if _, err := db.Exec("CREATE TABLE `public`.`post` (`id` serial,`post_id` text,`post_name` text,`image_url` text, PRIMARY KEY (`id`)) TABLESPACE `pg_default`;"); err != nil {
 		fmt.Sprintf("Error creating database table: %q", err)
 		return
 	}
