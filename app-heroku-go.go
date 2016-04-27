@@ -46,8 +46,8 @@ func main() {
 	r.HandleFunc("/db", dbFunc)
 	r.HandleFunc("/a/{id}", apiTest)
 	fmt.Println("Server Listening...")
-	err := http.ListenAndServe(":"+os.Getenv("PORT"), r)
-	if err != nil {
+	er := http.ListenAndServe(":"+os.Getenv("PORT"), r)
+	if er != nil {
 		panic("ListenAndServe")
 	}
 }
