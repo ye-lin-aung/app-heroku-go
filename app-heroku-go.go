@@ -36,6 +36,11 @@ func dbFunc(w http.ResponseWriter, r *http.Request) {
 	http.Redirect(w, r, "/", 200)
 }
 func main() {
+
+	db, err = sql.Open("postgres", os.Getenv("DATABASE_URL"))
+	if err != nil {
+		log.Fatalf("Error opening database: %q", err)
+	}
 	r := mux.NewRouter()
 	r.HandleFunc("/", homeHandler)
 	r.HandleFunc("/db", dbFunc)
@@ -45,9 +50,4 @@ func main() {
 	if err != nil {
 		panic("ListenAndServe")
 	}
-	db, err = sql.Open("postgres", os.Getenv("DATABASE_URL"))
-	if err != nil {
-		log.Fatalf("Error opening database: %q", err)
-	}
-
 }
