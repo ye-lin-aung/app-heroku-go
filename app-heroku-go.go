@@ -26,7 +26,7 @@ func apiTest(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, "\n\t Hello%s", v["id"])
 }
 
-func db(w http.ResponseWriter, r *http.Request) {
+func dbFunc(w http.ResponseWriter, r *http.Request) {
 
 	if _, err := db.Exec("CREATE TABLE IF NOT EXISTS ticks (tick timestamp)"); err != nil {
 		fmt.Sprintf("Error creating database table: %q", err)
@@ -38,7 +38,7 @@ func db(w http.ResponseWriter, r *http.Request) {
 func main() {
 	r := mux.NewRouter()
 	r.HandleFunc("/", homeHandler)
-	r.HandleFunc("/db", db)
+	r.HandleFunc("/db", dbFunc)
 	r.HandleFunc("/a/{id}", apiTest)
 	fmt.Println("Server Listening...")
 	err := http.ListenAndServe(":"+os.Getenv("PORT"), r)
