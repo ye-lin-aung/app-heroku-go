@@ -37,9 +37,9 @@ func dbFunc(w http.ResponseWriter, r *http.Request) {
 }
 func main() {
 
-	db, err = sql.Open("postgres", os.Getenv("DATABASE_URL"))
-	if err != nil {
-		log.Fatalf("Error opening database: %q", err)
+	db, e = sql.Open("postgres", os.Getenv("DATABASE_URL"))
+	if e != nil {
+		log.Fatalf("Error opening database: %q", e)
 	}
 	r := mux.NewRouter()
 	r.HandleFunc("/", homeHandler)
